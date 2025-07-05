@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>نظام شغف – إدارة المرافق</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        direction: rtl;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        color: #222;
+      }
+
+      .facility-section {
+        margin: 30px 0;
+      }
+
+      .facility-section h2 {
+        margin-bottom: 10px;
+        color: #333;
+        padding-right: 10px;
+      }
+
+      .box-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .box {
+        width: 50px;
+        height: 50px;
+        background-color: #ccc;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .box.available {
+        background-color: seagreen;
+      }
+
+      .box.reserved {
+        background-color: crimson;
+      }
+
+      .box:hover {
+        opacity: 0.8;
+      }
+
+      #detailsModal {
+        display: none;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        text-align: center;
+      }
+
+      #detailsModal button {
+        margin-top: 10px;
+        padding: 6px 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>نظام شغف لإدارة المرافق</h1>
+
+    <div class="facility-section">
+      <h2>Cubes</h2>
+      <div class="box-grid">
+        <div
+          class="box reserved"
+          onclick="showDetails(this)"
+          data-name="محمد"
+          data-from="2025-07-05"
+          data-to="2025-07-07"
+        >
+          1
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          2
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          3
+        </div>
+        <div
+          class="box reserved"
+          onclick="showDetails(this)"
+          data-name="ليلى"
+          data-from="2025-07-03"
+          data-to="2025-07-06"
+        >
+          4
+        </div>
+      </div>
+    </div>
+
+    <div class="facility-section">
+      <h2>Units</h2>
+      <div class="box-grid">
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          1
+        </div>
+        <div
+          class="box reserved"
+          onclick="showDetails(this)"
+          data-name="سارة"
+          data-from="2025-07-01"
+          data-to="2025-07-08"
+        >
+          2
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          3
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          4
+        </div>
+      </div>
+    </div>
+
+    <div class="facility-section">
+      <h2>Co-Offices</h2>
+      <div class="box-grid">
+        <div
+          class="box reserved"
+          onclick="showDetails(this)"
+          data-name="سامي"
+          data-from="2025-07-02"
+          data-to="2025-07-05"
+        >
+          1
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          2
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          3
+        </div>
+        <div
+          class="box reserved"
+          onclick="showDetails(this)"
+          data-name="نور"
+          data-from="2025-07-04"
+          data-to="2025-07-09"
+        >
+          4
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          5
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          6
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          7
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          8
+        </div>
+        <div
+          class="box reserved"
+          onclick="showDetails(this)"
+          data-name="مروان"
+          data-from="2025-07-06"
+          data-to="2025-07-10"
+        >
+          9
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          10
+        </div>
+        <div
+          class="box available"
+          onclick="showDetails(this)"
+          data-name=""
+          data-from=""
+          data-to=""
+        >
+          11
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة التفاصيل -->
+    <div id="detailsModal">
+      <p id="detailsText"></p>
+      <button onclick="closeModal()">إغلاق</button>
+    </div>
+
+    <script>
+      function showDetails(element) {
+        const name = element.dataset.name;
+        const from = element.dataset.from;
+        const to = element.dataset.to;
+
+        let text = "";
+
+        if (name && from && to) {
+          text = `محجوز من قِبل: ${name}<br>من: ${from}<br>إلى: ${to}`;
+        } else {
+          text = "الغرفة متاحة حاليًا ✅";
+        }
+
+        document.getElementById("detailsText").innerHTML = text;
+        document.getElementById("detailsModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("detailsModal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
